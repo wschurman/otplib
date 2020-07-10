@@ -68,13 +68,11 @@ and includes additional methods to allow you to work with Google Authenticator.
 - Pluggable modules (crypto / base32)
   - `crypto (node)`
   - `crypto-js`
-  - `@ronomon/crypto-async`
   - `thirty-two`
   - `base32-encode` + `base32-decode`
 - Presets provided
   - `browser`
   - `default (node)`
-  - `default-async (same as default, but with async methods)`
   - `v11 (adapter for previous version)`
 
 ## Quick Start
@@ -302,7 +300,8 @@ As of `v12.0.0`, the library has been re-written in Typescript from the ground u
 
 ### Async Support
 
-`async` support was introduced in `v12.0.0` as an additional core library.
+`async` support was first introduced in `v12.0.0`. As of `v13.0.0` it will exist as a set
+of helpers over the core library.
 
 This was added as some libraries like [expo.io][link-expo-crypto] or even
 the browser API ([window.Crypto.subtle][link-mdn-subtlecrypto]) started providing
@@ -316,6 +315,8 @@ You to find more details in the [core-async][docs-core-async] folder.
 
 The approximate size for the **optimised, minified + gzipped** bundle is **9.53KB**.
 Paired with the gzipped browser `buffer.js` module, it would be about `7.65KB + 9.53KB = 17.18KB`.
+
+As of `v13.0.0` the default export will be built with `buffer.js`.
 
 For more details, please refer to the [@otplib/preset-browser documentation][docs-preset-browser].
 

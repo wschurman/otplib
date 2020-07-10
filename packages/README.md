@@ -45,7 +45,6 @@ available plugins.
 | npm install                               | description                                          |
 | ----------------------------------------- | ---------------------------------------------------- |
 | [@otplib/core](./otplib-core)             | Core hotp/totp/authenticator functions + classes     |
-| [@otplib/core-async](./otplib-core-async) | Provides async helpers in addition to `@otplib/core` |
 
 ```js
 import { HOTP, TOTP, Authenticator } from '@otplib/core';
@@ -60,7 +59,7 @@ import { HOTPAsync, TOTPAsync, AuthenticatorAsync } from '@otplib/core-async';
 | --------------------------------------------------------------------------- | ----- | ------------------------------ |
 | [@otplib/plugin-crypto](./otplib-plugin-crypto)                             | sync  | `crypto` (included in Node.js) |
 | [@otplib/plugin-crypto-js](./otplib-plugin-crypto-js)                       | sync  | `crypto-js`                    |
-| [@otplib/plugin-crypto-async-ronomon](./otplib-plugin-crypto-async-ronomon) | async | `@ronomon/crypto-async`        |
+  |
 
 These crypto plugins provides:
 
@@ -97,7 +96,6 @@ Each presets would need the corresponding dependent npm modules to be installed.
 | npm install                                                   | description                                                |
 | ------------------------------------------------------------- | ---------------------------------------------------------- |
 | [@otplib/preset-default](./otplib-preset-default)             | A preset with the base32 and crypto plugins already setup. |
-| [@otplib/preset-default-async](./otplib-preset-default-async) | Async version of `@otplib/preset-default`                  |
 | [@otplib/preset-browser](./otplib-preset-browser)             | Webpack bundle and is a self contained umd bundle.         |
 | [@otplib/preset-v11](./otplib-preset-v11)                     | Wrapper to adapt the APIs to v11.x compatible format       |
 

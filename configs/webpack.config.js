@@ -11,16 +11,16 @@ function webpackConfig(file) {
   return {
     mode: ENV === 'production' ? ENV : 'development',
     entry: {
-      otplib: path.join(CWD, file)
+      otplib: path.join(CWD, file),
     },
     output: {
       library: '[name]',
       libraryTarget: 'umd',
       path: helpers.outputDirectory(CWD),
-      filename: helpers.fileNameNoExt(file) + '.js'
+      filename: helpers.fileNameNoExt(file) + '.js',
     },
     node: {
-      Buffer: false
+      Buffer: false,
     },
     module: {
       rules: [
@@ -35,30 +35,30 @@ function webpackConfig(file) {
               presets: [
                 [
                   '@babel/preset-env',
-                  { modules: false, targets: 'cover 99.5%' }
+                  { modules: false, targets: 'cover 99.5%' },
                 ],
-                '@babel/preset-typescript'
-              ]
-            }
-          }
-        }
-      ]
+                '@babel/preset-typescript',
+              ],
+            },
+          },
+        },
+      ],
     },
     resolve: {
       extensions: helpers.EXTENSIONS,
-      modules: [path.join(helpers.ROOT_DIR, 'node_modules'), 'node_modules']
+      modules: [path.join(helpers.ROOT_DIR, 'node_modules'), 'node_modules'],
     },
     plugins: [
       new webpack.DefinePlugin({
-        'process.env.NODE_ENV': JSON.stringify(ENV)
+        'process.env.NODE_ENV': JSON.stringify(ENV),
       }),
       new webpack.BannerPlugin({
         banner: helpers.banner(pkg),
-        raw: true
-      })
+        raw: true,
+      }),
     ],
     devtool: 'cheap-module-source-map',
-    target: 'web'
+    target: 'web',
   };
 }
 

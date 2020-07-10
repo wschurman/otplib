@@ -1,6 +1,6 @@
 /* eslint-disable @typescript-eslint/no-var-requires, @typescript-eslint/explicit-function-return-type */
 const path = require('path');
-const babel = require('rollup-plugin-babel');
+const { babel } = require('@rollup/plugin-babel');
 const cleanup = require('rollup-plugin-cleanup');
 const commonjs = require('@rollup/plugin-commonjs');
 const resolve = require('@rollup/plugin-node-resolve');
@@ -20,14 +20,14 @@ function rollupConfig(file) {
     output: {
       banner: helpers.banner(pkg),
       file: outputFile,
-      format: 'cjs'
+      format: 'cjs',
     },
     external: [
       'crypto',
       ...(helpers.buildConfig(pkg).externals || []),
       ...Object.keys(pkg.dependencies || {}),
       ...Object.keys(pkg.devDependencies || {}),
-      ...Object.keys(pkg.peerDependencies || {})
+      ...Object.keys(pkg.peerDependencies || {}),
     ],
     plugins: [
       babel({
@@ -36,22 +36,22 @@ function rollupConfig(file) {
         configFile: false,
         presets: [
           ['@babel/preset-env', { modules: false, targets: 'node 8' }],
-          '@babel/preset-typescript'
-        ]
+          '@babel/preset-typescript',
+        ],
       }),
       resolve({
         extensions: helpers.EXTENSIONS,
         preferBuiltins: true,
-        rootDir: path.join(__dirname, '..')
+        rootDir: path.join(__dirname, '..'),
       }),
       commonjs({
-        include: 'node_modules/**'
+        include: 'node_modules/**',
       }),
       cleanup({
         comments: 'none',
-        extensions: helpers.EXTENSIONS.map(v => v.slice(1))
-      })
-    ]
+        extensions: helpers.EXTENSIONS.map((v) => v.slice(1)),
+      }),
+    ],
   };
 }
 
